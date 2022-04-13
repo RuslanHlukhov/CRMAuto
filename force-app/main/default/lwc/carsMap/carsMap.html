@@ -1,0 +1,13 @@
+<template>   
+	<h1 class="textMap" style="font-size:30px; text-transform: uppercase; margin-left: 36%; color: rgb(88, 85, 85);">{label.DealershipCenter}</h1>
+    <div style="height: 20px;"></div> 
+	<template if:true={loaded} >		                           
+        <lightning-map if:true={orders} 
+                    map-markers={mapMarkers}
+                    markers-title={markersTitle}
+        ></lightning-map>	 
+    </template>
+    <!-- <template if:false={loaded}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template> -->
+</template> 

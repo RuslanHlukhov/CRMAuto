@@ -1,0 +1,100 @@
+<template>
+	<lightning-card>
+		<div class="slds-card__body_inner cars">
+			<div class="money-area">
+				<button class="curryncy" onclick={currencyUA}>UA</button>
+				<button class="curryncy" onclick={currencyEUR}>EUR</button>
+			</div>
+			<lightning-input  type="search" onchange={handleKeyChange} class="slds-m-botton-small search-area" label={label.Search}
+            value={centerName}>
+        </lightning-input>
+        <template for:each={centerList} for:item="centerObj" for:index="index">
+            <option key={centerObj.Id}>{centerObj.model}</option>
+		</template>
+			<!-- Start bear list -->
+			<template if:true={showData}>
+				<lightning-layout multiple-rows="true" pull-to-boundary="small" style="width: 99%; margin-left:3px;">					
+					<template for:each={recordsList}   for:item="product">
+						<lightning-layout-item key={product.Id} size="3" class="slds-var-p-around_x-small">
+							<!-- Start bear tile -->
+							<lightning-card  class="cars-tile">
+								<div class="slds-var-p-horizontal_small bear-tile-body">
+									<div class="slds-media">
+										<div class="slds-media__body"  >
+											<div class="modal" data-value={product.Vin} onclick={showModalBox} > 
+											<p class="slds-var-m-bottom_xx-small" style="text-transform: uppercase; font-size:20px">{product.Name}</p>
+											<p class="slds-var-m-bottom_xx-small">Модель: {product.Model}</p>
+											<p class="slds-var-m-bottom_xx-small">Объем: {product.EngineCapacity}
+											</p>
+											<p class="slds-var-m-bottom_xx-small">Дата выпуска: {product.Build}
+											</p>
+											<!-- <p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>Цена: USD{product.Price}</p> -->
+											<p class="slds-var-m-bottom_xx-small">Цена: {product.Price} USD</p>
+											<p class="slds-var-m-bottom_xx-small">VIN: {product.Vin}</p>
+											<img src={product.Photo} style="height: 140px; width:200px;"  />		
+											</div>						
+										</div>
+									</div>
+								</div>
+							</lightning-card>
+
+							<!-- <lightning-button variant="success" label="Open popup"
+                        		title="Open popup" onclick={showModalBox}>
+    						</lightning-button> -->
+							<!-- End bear tile -->
+						</lightning-layout-item>						
+					</template>				
+				</lightning-layout>			
+			</template>
+			<!-- End car list -->
+			<!-- Data failed to load -->
+			<template if:true={error}>
+				<div class="slds-text-color_error">
+					An error occurred while loading the car list
+				</div>
+			</template>
+		</div>
+	</lightning-card>
+	
+	
+	   <!-- modal start -->      
+	   <template if:true={isShowModal}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+				<lightning-card  class="cars-tile">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox} style="margin-bottom:20px" >
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small"
+							style="margin-bottom:20px"
+							></lightning-icon>
+                        <span class="slds-assistive-text" style="margin-bottom:20px">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="text-transform: uppercase; font-size:25px">{selectedCar.Model}</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<img src={selectedCar.Photo} style="height: 140px; width:200px; margin: 20px;  margin-left: 30%;"  />
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Объем: {selectedCar.EngineCapacity}
+					</p>
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Дата выпуска: {selectedCar.Build}
+					</p>
+					<!-- <p class="slds-var-m-bottom_xx-small" if:true={isUKRActive} style=" font-size:20px">Цена: USD{selectedCar.Price}</p> -->
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Цена: {selectedCar.Price} USD</p>
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">VIN: {selectedCar.Vin}</p>		
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBox} title="Cancel">Cancel</button>
+                </footer>
+			</lightning-card>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+	 <!-- modal end -->
+</template>

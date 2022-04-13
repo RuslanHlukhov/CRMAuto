@@ -1,0 +1,11 @@
+.search{
+    width: 15%;
+    text-align: center;
+    margin-left: 40%;
+}
+.carsText{
+    font-size: 30px;
+    margin-left: 33%;
+    text-transform:uppercase;
+    color: rgb(88, 85, 85);
+}

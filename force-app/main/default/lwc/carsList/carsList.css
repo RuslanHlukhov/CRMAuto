@@ -1,0 +1,19 @@
+.cars{
+    font-size: 10px;
+    text-align: center;
+}
+.carsText{
+    font-size: 30px;
+    text-align: center;
+}
+.search-area{
+    width: 50%;
+    margin-left: 25%;
+}
+.curryncy{
+    width: 30px;
+}
+.money-area{
+    float: right;
+    margin: 5px;
+}

@@ -1,0 +1,50 @@
+<template>
+        <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-5">
+                        <h1 class="contact">{label.Contact}</h1>
+                        <lightning-card>
+                                <div class="slds-p-around_x-small">
+                                        <lightning-input type="text" label="Name" value={rec.Name} onchange={handleNameChange}>
+                                        </lightning-input>
+                                        <lightning-input type="text" label="LastName" value={rec.LastName}
+                                                onchange={handleLstnChange}>
+                                        </lightning-input>
+                                        <!-- <lightning-input label="Company" value={rec.Company}
+                                                onchange={handleCmpnChange}>
+                                        </lightning-input> -->
+                                        <lightning-input type="Phone" label="Phone" value={rec.Phone}
+                                                onchange={handlePhnChange} 
+                                                placeholder="+380-000-00-00" 
+                                                pattern="\+3\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+                                                minlength="10" maxlength="13">
+                                        </lightning-input>
+                                        <lightning-input label="Email" value={rec.Email} onchange={handleEmailChange}>
+                                        </lightning-input>
+                                        <lightning-record-edit-form label="Car center" object-api-name="Lead"
+                                                id="createCarCenterForm">
+                                                <label for="fieldid">Car Center</label>
+                                                <lightning-input-field field-name="Car_Center__c" variant="label-hidden"
+                                                        onchange={handleCarCenterChange} required>
+                                                </lightning-input-field>
+                                        </lightning-record-edit-form>
+                                        <lightning-input type="text" label="Subject" value={rec.Subject}
+                                                onchange={handleSubjectChange}>
+                                        </lightning-input>
+                                        <lightning-input type="text" label="Text" value={rec.Text}
+                                                onchange={handleTextChange}>
+                                        </lightning-input>
+                                        <lightning-button label="Save" onclick={handleClick}></lightning-button>
+                                </div>
+                        </lightning-card>
+                </div>
+                <div class="slds-col slds-size_3-of-5">
+                        <h1 class="contact">{label.AboutUsLabel}</h1>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Doloremque voluptas quisquam perferendis dolores laboriosam. 
+                                Delectus ullam commodi vero saepe iste, deleniti laudantium labore repellendus quos 
+                                facilis placeat quis sequi atque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                Dolor quis repellat provident. Molestias, dolore omnis! Amet excepturi beatae dolor 
+                                dignissimos enim id cumque voluptatum quisquam fugiat? Quod explicabo aspernatur unde?</p>
+                </div>
+        </div>
+</template>

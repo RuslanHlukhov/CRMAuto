@@ -1,0 +1,48 @@
+<apex:page controller="carsListController" showHeader="false" sidebar="false">
+    <style>
+        body {
+            background: #f1f6f5;
+        }
+    </style>
+    <!-- Begin Default Content REMOVE THIS -->
+    <apex:includeLightning />
+    <div id="menu" />
+    <div id="search" style="margin: 30px;" />
+    <div id="carsList" style="margin: 30px;" />
+    <div id="carsMap" style="margin: 30px;"></div>
+    <div id="createLead" style="margin: 30px;" />
+    <div id="testDrive" style="margin: 30px;"></div>
+    <script>
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:menu", {}, "menu", function (component) {
+                console.log('component menu created')
+            });
+        });
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:search", {}, "search", function (component) {
+                console.log('component search created')
+            });
+        });
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:carsList", {}, "carsList", function (component) {
+                console.log('component carsList created')
+            });
+        });
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:carsMap", {}, "carsMap", function (component) {
+                console.log('component carsMap created')
+            });
+        });
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:createLead", {}, "createLead", function (component) {
+                console.log('component createLead created')
+            });
+        });
+        $Lightning.use("c:CarsCRM", function () {
+            $Lightning.createComponent("c:testDrive", {}, "testDrive", function (component) {
+                console.log('component testDrive created')
+            });
+        });
+    </script>
+    <!-- End Default Content REMOVE THIS -->
+</apex:page>
