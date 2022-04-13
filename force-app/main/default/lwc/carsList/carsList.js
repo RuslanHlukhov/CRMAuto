@@ -20,7 +20,7 @@ export default class CarsList extends LightningElement {
     @track centerList = [];
     @track isShowModal = false;
     @track isUKRActive = false;
-    @track isDollarActive = false;
+    @track isDollarActive = true;
     connectedCallback() {
         this.loadCars();
     }
@@ -36,7 +36,8 @@ export default class CarsList extends LightningElement {
                         EngineCapacity: result[key].product.Engine_capacity__c,
                         Price: result[key].product.PriceUSD__c,
                         Vin: result[key].product.Vin_Code__c,
-                        Photo: fotoUrl
+                        Photo: fotoUrl,
+                        PriceUa: result[key].uaPrice
                     });            
                 }
                 this.showData = true;
@@ -62,7 +63,8 @@ export default class CarsList extends LightningElement {
                             EngineCapacity: result[key].product.Engine_capacity__c,
                             Price: result[key].product.PriceUSD__c,
                             Vin: result[key].product.Vin_Code__c,
-                            Photo: fotoUrl
+                            Photo: fotoUrl,
+                            PriceUa: result[key].uaPrice
                         });
                     }
                     this.showData = true;
@@ -94,4 +96,14 @@ export default class CarsList extends LightningElement {
     label = {
         Search
     };
+
+    handleUaPrice(event) {
+        this.isUKRActive = true;
+        this.isDollarActive = false;
+    }
+    handleUsdPrice(event){
+        this.isDollarActive = true;
+        this.isUKRActive = false;
+    }
+    
 }

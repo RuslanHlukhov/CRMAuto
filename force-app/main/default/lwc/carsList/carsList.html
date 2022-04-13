@@ -2,8 +2,8 @@
 	<lightning-card>
 		<div class="slds-card__body_inner cars">
 			<div class="money-area">
-				<button class="curryncy" onclick={currencyUA}>UA</button>
-				<button class="curryncy" onclick={currencyEUR}>EUR</button>
+				<button class="curryncy" onclick={handleUaPrice}>UA</button>
+				<button class="curryncy" onclick={handleUsdPrice}>USD</button>
 			</div>
 			<lightning-input  type="search" onchange={handleKeyChange} class="slds-m-botton-small search-area" label={label.Search}
             value={centerName}>
@@ -28,8 +28,8 @@
 											</p>
 											<p class="slds-var-m-bottom_xx-small">Дата выпуска: {product.Build}
 											</p>
-											<!-- <p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>Цена: USD{product.Price}</p> -->
-											<p class="slds-var-m-bottom_xx-small">Цена: {product.Price} USD</p>
+											<p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>Цена: {product.PriceUa} UA</p>
+											<p class="slds-var-m-bottom_xx-small" if:true={isDollarActive}>Цена: {product.Price} USD</p>
 											<p class="slds-var-m-bottom_xx-small">VIN: {product.Vin}</p>
 											<img src={product.Photo} style="height: 140px; width:200px;"  />		
 											</div>						
@@ -83,8 +83,8 @@
 					</p>
 					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Дата выпуска: {selectedCar.Build}
 					</p>
-					<!-- <p class="slds-var-m-bottom_xx-small" if:true={isUKRActive} style=" font-size:20px">Цена: USD{selectedCar.Price}</p> -->
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Цена: {selectedCar.Price} USD</p>
+					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>Цена: {selectedCar.PriceUa} UA</p>
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>Цена: {selectedCar.Price} USD</p>
 					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">VIN: {selectedCar.Vin}</p>		
                 </div>
                 <!-- Modal/Popup Box LWC footer starts here -->

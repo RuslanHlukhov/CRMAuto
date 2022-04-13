@@ -12,7 +12,7 @@ public with sharing class carListService {
         for(Product2 product : products){
             carsListController.ProductWrapper productWrapper = new carsListController.ProductWrapper();
             productWrapper.product = product;
-            productWrapper.UaPrice = ExchangeRateService.getUaPrice(product.PriceUSD__c);
+            productWrapper.uaPrice = ExchangeRateService.getUaPriceFromUsd(product.PriceUSD__c);
             productWrapper.attachmentId = product.Attachments[0].Id;  
             productsWrappers.add(productWrapper);       
         }

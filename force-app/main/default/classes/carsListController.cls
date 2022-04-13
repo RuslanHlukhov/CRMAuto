@@ -14,7 +14,7 @@ public with sharing class carsListController {
         @AuraEnabled
         public String attachmentId;
         @AuraEnabled
-        public String UaPrice;
+        public String uaPrice;
     
 
         public ProductWrapper(){
