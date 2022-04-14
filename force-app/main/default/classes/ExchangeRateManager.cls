@@ -6,6 +6,5 @@ public with sharing class ExchangeRateManager {
     }
 
     public ExchangeRateManager() {
-
     }
 }
