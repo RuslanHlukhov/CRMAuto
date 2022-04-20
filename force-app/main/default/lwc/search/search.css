@@ -9,3 +9,9 @@
     text-transform:uppercase;
     color: rgb(88, 85, 85);
 }
+.btn-lang{
+    float: right;
+}
+.btn{
+    width: 40px;
+}
