@@ -43,7 +43,6 @@ export default class TestDrive extends LightningElement {
                 }
             });
     }
-
     handleCarCenter(event) {
         this.selectedCarCenterId = event.target.value;
         getCarsFromCarCenterByCarCenterId({
@@ -129,27 +128,21 @@ export default class TestDrive extends LightningElement {
     }
     handleFirstNameChange(event) {
         this.firstname = event.target.value;
-        console.log("Name", this.firstname);
     }
     handleLastNameChange(event) {
         this.lastname = event.target.value;
-        console.log("LastName", this.lastname);
     }
     handlePhoneChange(event) {
         this.phone = event.target.value;
-        console.log("Phone", this.phone);
     }
     handleEmailChange(event) {
         this.email = event.target.value;
-        console.log("Email", this.email);
     }
     handleDateChange(event) {
         this.testDriveStartDate = event.target.value;
-        console.log("Date", this.testDriveStartDate);
     }
     handleTextChange(event) {
         this.text = event.target.value;
-        console.log("Text", this.text);
     }
     dateNow(){
         timeInMs = Date.now();

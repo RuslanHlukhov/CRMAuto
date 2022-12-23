@@ -24,16 +24,30 @@
                         required>
                     </lightning-input>
 
+                    <!-- <lightning-record-edit-form label="Car center" object-api-name="Lead"
+                        id="createCarCenterForm">
+                        <label for="fieldid">Car Center</label>
+                        <lightning-input-field field-name="Car_Center__c" variant="label-hidden"
+                            onchange={handleCarCenterChange} required>
+                        </lightning-input-field>
+                    </lightning-record-edit-form>
 
+                    <lightning-record-edit-form label="Car" object-api-name="Test_Drive__c"
+                        id="createCarForm">
+                        <label for="fieldid">Car</label>
+                        <lightning-input-field field-name="Product__c" variant="label-hidden"
+                            onchange={handleCarChange} required>
+                        </lightning-input-field>
+                    </lightning-record-edit-form> -->
                     <div onclick={handleClickOnCarCenters} class="divforoptions">
                         <lightning-combobox name="carCenter-area" label="Car center" value={selectedCarCenterId}
-                            options={carCenterOptions} onchange={handleCarCenter}>
+                            options={carCenterOptions} onchange={handleCarCenter}> 
                         </lightning-combobox>
-                    </div>
+                    </div> 
 
                     <div onclick={handleProductChange} class="divforcars">
-                        <lightning-combobox name="cars-area" label="Cars" value={selectedCarId} options={carsOptions}
-                            onchange={handleProductSelect}>
+                        <lightning-combobox name="cars-area" label="Cars" value={selectedCarId} 
+                        options={carsOptions} onchange={handleProductSelect}>
                         </lightning-combobox>
                     </div>
 
