@@ -1,12 +1,27 @@
 public with sharing class carsListController { 
    @AuraEnabled (cacheable = true)
     public static List<ProductWrapper> getCars(){
-        System.debug('getCars carsListController');
-        return carListService.getCars();
+        try {
+            return carListService.getCars();
+          } catch (Exception e) {
+              throw new AuraHandledException(e.getMessage());
+          }
+    }
+    @AuraEnabled
+    public static List<ProductWrapper> getCarsByEngineCapacity(){
+        try {
+          return carListService.getCarsByEngineCapacity(); 
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
     @AuraEnabled
     public static List<ProductWrapper>getCarsByModel(String carModel){
-        return carListService.getCarsByModel(carModel);
+        try {
+            return carListService.getCarsByModel(carModel);
+          } catch (Exception e) {
+              throw new AuraHandledException(e.getMessage());
+          }    
     }
     public class ProductWrapper{
         @AuraEnabled

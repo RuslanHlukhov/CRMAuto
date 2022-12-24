@@ -8,6 +8,9 @@
 			<lightning-input  type="search" onchange={handleKeyChange} class="slds-m-botton-small-search-area" label={label.Search}
             value={centerName}>
         </lightning-input>
+		<div>
+			<button onclick={loadCarByCapacity}>Test</button>
+		</div>
         <template for:each={centerList} for:item="centerObj" for:index="index">
             <option key={centerObj.Id}>{centerObj.model}</option>
 		</template>
