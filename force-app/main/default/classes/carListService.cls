@@ -3,6 +3,9 @@ public with sharing class carListService {
         System.debug('getCars carListService');
         return wrapperFormation(carListManager.getCars());       
     }
+    public static List<carsListController.ProductWrapper> getCarsByEngineCapacity(){
+        return wrapperFormation(carListManager.getCarsByEngineCapacity());
+    }
     public static List<carsListController.ProductWrapper> getCarsByModel(String carModel){
         return wrapperFormation(carListManager.getCarsByModel(carModel));
     }
