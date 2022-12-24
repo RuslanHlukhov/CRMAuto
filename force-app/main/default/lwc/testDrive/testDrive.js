@@ -2,7 +2,7 @@ import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createTestDriveClient from '@salesforce/apex/TestDriveClientController.createTestDriveClient';
 import getCarCenters from '@salesforce/apex/CarCenterManager.getCarCenters';
-import getCarsFromCarCenterByCarCenterId from '@salesforce/apex/carListManager.getCarsFromCarCenterByCarCenterId'
+import getCarsFromCarCenterByCarCenterId from '@salesforce/apex/carListManager.getCarsFromCarCenterByCarCenterId';
 import testDrive from '@salesforce/label/c.TestDrive';
 
 export default class TestDrive extends LightningElement {
@@ -31,7 +31,7 @@ export default class TestDrive extends LightningElement {
     connectedCallback() {
         this.selectCarCetnerList();
     }
-    //Вот так надо делать
+    //Best practies
     selectCarCetnerList() {
         getCarCenters({})
             .then(result => {
