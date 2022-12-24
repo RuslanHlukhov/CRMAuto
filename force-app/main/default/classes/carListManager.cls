@@ -15,6 +15,15 @@ public with sharing class carListManager {
         ORDER BY Engine_capacity__c
         ];
     }
+
+    public static List<Product2> getCarsByBuildData(){
+        return [SELECT Id, Name, Build_Data__c, Engine_capacity__c, Model__c, PriceUSD__c, Vin_Code__c,
+        (SELECT Id, Name FROM Attachments)
+        FROM Product2
+        WHERE Satus__c = 'In stock'
+        ORDER BY Build_Data__c
+        ];
+    }
     
     public static List<Product2> getCarsByModel(String carModel){
         String searchString = '%' + carModel + '%';

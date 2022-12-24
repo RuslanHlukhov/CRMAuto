@@ -16,6 +16,14 @@ public with sharing class carsListController {
         }
     }
     @AuraEnabled
+    public static List<ProductWrapper> getCarsByBuildData(){
+        try {
+            return carListService.getCarsByBuildData();
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    @AuraEnabled
     public static List<ProductWrapper>getCarsByModel(String carModel){
         try {
             return carListService.getCarsByModel(carModel);

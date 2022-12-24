@@ -4,6 +4,7 @@ import getCarsByModel from '@salesforce/apex/carsListController.getCarsByModel';
 import Search from '@salesforce/label/c.Search';
 import ModelCar from '@salesforce/label/c.Model';
 import SortByCapacity from '@salesforce/apex/carsListController.getCarsByEngineCapacity';
+import SortByBuildDate from '@salesforce/apex/carsListController.getCarsByBuildData';
 export default class CarsList extends LightningElement {
 
     label = {
@@ -20,14 +21,18 @@ export default class CarsList extends LightningElement {
     priceLisk = [];
     @track centerList = [];
     @track isShowModal = false;
-    @track isUKRActive = false;
-    @track isDollarActive = true;
+    @track isUKRActive = true;
+    @track isDollarActive = false;
     connectedCallback() {
         this.loadCars();
     }
+
+    
     loadCars() {
         getCars()
             .then(result => {
+                this.showData = false;
+                this.recordsList = [];
                 for (let key in result) {
                     let fotoUrl = 'https://resourceful-bear-swh5o0-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file=' + result[key].attachmentId;
                     this.recordsList.push({
@@ -74,6 +79,30 @@ export default class CarsList extends LightningElement {
         });
         
     }
+    loadCarByBuildDate(){
+        SortByBuildDate()
+        .then(result => {
+            this.showData = false;
+            this.recordsList = [];
+            for (let key in result) {
+                let fotoUrl = 'https://resourceful-bear-swh5o0-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file=' + result[key].attachmentId;
+                this.recordsList.push({
+                    Name: result[key].product.Name,
+                    Model: result[key].product.Model__c,
+                    Build: result[key].product.Build_Data__c,
+                    EngineCapacity: result[key].product.Engine_capacity__c,
+                    Price: result[key].product.PriceUSD__c,
+                    Vin: result[key].product.Vin_Code__c,
+                    Photo: fotoUrl,
+                    PriceUa: result[key].uaPrice
+                });            
+            }
+            this.showData = true;
+        })
+        .catch(error => {
+            this.error = error;
+        });
+    }
 
     handleKeyChange(event) {
         this.centerName = event.target.value;
@@ -111,7 +140,7 @@ export default class CarsList extends LightningElement {
             }
         }
     }
-
+    
     showModalBox(event) {  
         this.selectedCarVin = event.currentTarget.dataset.value;
         this.getSelectedCarByVin();
@@ -126,12 +155,14 @@ export default class CarsList extends LightningElement {
     };
 
     handleUaPrice(event) {
+        console.log('TestUACurrency');
         this.isUKRActive = true;
         this.isDollarActive = false;
     }
     handleUsdPrice(event){
+        console.log('TestUSACurrency');
         this.isDollarActive = true;
         this.isUKRActive = false;
     }
-    
+
 }
