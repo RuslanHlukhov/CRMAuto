@@ -1,14 +1,22 @@
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track } from 'lwc';
 import getCars from '@salesforce/apex/carsListController.getCars';
 import getCarsByModel from '@salesforce/apex/carsListController.getCarsByModel';
-import Search from '@salesforce/label/c.Search';
-import ModelCar from '@salesforce/label/c.Model';
 import SortByCapacity from '@salesforce/apex/carsListController.getCarsByEngineCapacity';
 import SortByBuildDate from '@salesforce/apex/carsListController.getCarsByBuildData';
+import SortByDateAddedLabel from '@salesforce/label/c.SortByDateAdded';
+import Search from '@salesforce/label/c.Search';
+import ModelCarLabel from '@salesforce/label/c.Model';
+import FollowUs from '@salesforce/label/c.Follow_Us';
+import DealershipCenter from '@salesforce/label/c.Dealership_center';
+import MoreInformation from '@salesforce/label/c.MoreInformation';
 export default class CarsList extends LightningElement {
 
     label = {
-        ModelCar,
+        ModelCarLabel,
+        SortByDateAddedLabel,
+        FollowUs,
+        DealershipCenter,
+        MoreInformation
     };
     
     showData = false;

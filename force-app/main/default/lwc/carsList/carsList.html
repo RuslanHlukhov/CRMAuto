@@ -15,14 +15,15 @@
 				<input type="radio" id="radio-61" value="radio-61" name="default" checked="" />
 				<label class="slds-radio__label" for="radio-61">
 				  <span class="slds-radio_faux"></span>
-				  <span class="slds-form-element__label" >Standart sort</span>
+				  <span class="slds-form-element__label">Sort by data added</span>
 				</label>
 			  </span>
+			  
 			  <span class="slds-radio" onclick={loadCarByCapacity}>
 				<input type="radio" id="radio-62" value="radio-62" name="default" />
 				<label class="slds-radio__label" for="radio-62">
 				  <span class="slds-radio_faux"></span>
-				  <span class="slds-form-element__label" >Sort by capacity</span>
+				  <span class="slds-form-element__label">Sort by capacity</span>
 				</label>
 			  </span>
 			  <span class="slds-radio" onclick={loadCarByBuildDate}>
@@ -35,7 +36,6 @@
 		  </div>
 		  </fieldset>
 		</div>
-		
 	</div>
 		<div class="money-area">
 			<p class="currency">Currency</p>
@@ -67,8 +67,12 @@
 											<p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>Цена: {product.PriceUa} UA</p>
 											<p class="slds-var-m-bottom_xx-small" if:true={isDollarActive}>Цена: {product.Price} USD</p>
 											<p class="slds-var-m-bottom_xx-small">VIN: {product.Vin}</p>
-											<img src={product.Photo} style="height: 140px; width:200px;"  />		
-											</div>						
+											<img src={product.Photo} style="height: 140px; width:200px;"  />	
+											
+											</div>	
+											<div class="moreInformation" data-value={product.Vin} onclick={showModalBox}>
+											<button class="slds-button slds-button_brand" >More Information</button>					
+											</div>
 										</div>
 									</div>
 								</div>
