@@ -21,8 +21,8 @@ export default class CarsList extends LightningElement {
     priceLisk = [];
     @track centerList = [];
     @track isShowModal = false;
-    @track isUKRActive = true;
-    @track isDollarActive = false;
+    @track isUKRActive = false;
+    @track isDollarActive = true;
     connectedCallback() {
         this.loadCars();
     }

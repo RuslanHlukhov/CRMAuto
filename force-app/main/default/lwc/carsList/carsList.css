@@ -17,3 +17,20 @@
     float: right;
     margin: 5px;
 }
+.horizontal{
+    float: left;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+    margin-top: 20px;
+    width: 500px; 
+    margin-right: 10px;
+    text-align: center; 
+    margin-left: 1%;
+}
+.customRadioCls .slds-form-element__control .slds-radio{
+    display : inline-block !important;
+}
+.currency{
+    font-size: 15px;
+}
