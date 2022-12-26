@@ -3,20 +3,20 @@ import getCars from '@salesforce/apex/carsListController.getCars';
 import getCarsByModel from '@salesforce/apex/carsListController.getCarsByModel';
 import SortByCapacity from '@salesforce/apex/carsListController.getCarsByEngineCapacity';
 import SortByBuildDate from '@salesforce/apex/carsListController.getCarsByBuildData';
+import MoreInformationLabel from '@salesforce/label/c.MoreInformation';
 import SortByDateAddedLabel from '@salesforce/label/c.SortByDateAdded';
-import Search from '@salesforce/label/c.Search';
-import ModelCarLabel from '@salesforce/label/c.Model';
-import FollowUs from '@salesforce/label/c.Follow_Us';
-import DealershipCenter from '@salesforce/label/c.Dealership_center';
-import MoreInformation from '@salesforce/label/c.MoreInformation';
+import SortByCapacityLabel from '@salesforce/label/c.SortByCapacity';
+import SortByBuildDateLabel from '@salesforce/label/c.SortByBuildDate';
+import SearchCar from '@salesforce/label/c.SearchCar';
+
 export default class CarsList extends LightningElement {
 
     label = {
-        ModelCarLabel,
+        MoreInformationLabel,
         SortByDateAddedLabel,
-        FollowUs,
-        DealershipCenter,
-        MoreInformation
+        SortByCapacityLabel,
+        SortByBuildDateLabel,
+        SearchCar
     };
     
     showData = false;
@@ -158,10 +158,6 @@ export default class CarsList extends LightningElement {
     hideModalBox() {  
         this.isShowModal = false;
     }
-    label = {
-        Search
-    };
-
     handleUaPrice(event) {
         console.log('TestUACurrency');
         this.isUKRActive = true;
