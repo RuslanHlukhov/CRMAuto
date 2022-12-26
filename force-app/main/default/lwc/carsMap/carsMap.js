@@ -1,10 +1,12 @@
 import { LightningElement, track } from 'lwc';
 import getAllOrder from '@salesforce/apex/carsMapController.getAllOrder';
 import DealershipCenter from '@salesforce/label/c.Dealership_center';
+import MoreInformation from '@salesforce/label/c.MoreInformation';
 
 export default class carsMap extends LightningElement {
   label = {
     DealershipCenter,
+    MoreInformation
   };
   @track loaded = true;
   showData = false;

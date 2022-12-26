@@ -3,7 +3,7 @@
 		<div class="slds-card__body_inner cars">
 			<div class="slds-size_7-of-7 " >
 		<div class="slds-size_2-of-7 horizontal">	
-		<lightning-input  type="search" placeholder="Search Car" onchange={handleKeyChange} class="slds-m-botton-small-search-area search"
+		<lightning-input  type="search" placeholder={label.SearchCar} onchange={handleKeyChange} class="slds-m-botton-small-search-area search"
             value={centerName}>
         </lightning-input>
 	</div>	
@@ -15,7 +15,7 @@
 				<input type="radio" id="radio-61" value="radio-61" name="default" checked="" />
 				<label class="slds-radio__label" for="radio-61">
 				  <span class="slds-radio_faux"></span>
-				  <span class="slds-form-element__label">Sort by data added</span>
+				  <span class="slds-form-element__label"><h5>{label.SortByDateAddedLabel}</h5></span>
 				</label>
 			  </span>
 			  
@@ -23,14 +23,14 @@
 				<input type="radio" id="radio-62" value="radio-62" name="default" />
 				<label class="slds-radio__label" for="radio-62">
 				  <span class="slds-radio_faux"></span>
-				  <span class="slds-form-element__label">Sort by capacity</span>
+				  <span class="slds-form-element__label">{label.SortByCapacityLabel}</span>
 				</label>
 			  </span>
 			  <span class="slds-radio" onclick={loadCarByBuildDate}>
 				  <input type="radio" id="radio-63" value="radio-63" name="default" />
 				  <label class="slds-radio__label" for="radio-63">
 					<span class="slds-radio_faux"></span>
-					<span class="slds-form-element__label" >Sort by Build Date</span>
+					<span class="slds-form-element__label" >{label.SortByBuildDateLabel}</span>
 				  </label>
 				</span>
 		  </div>
@@ -71,11 +71,12 @@
 											
 											</div>	
 											<div class="moreInformation" data-value={product.Vin} onclick={showModalBox}>
-											<button class="slds-button slds-button_brand" >More Information</button>					
-											</div>
+											<button class="slds-button slds-button_brand"><h5>{label.MoreInformationLabel}</h5></button>	
+																				
+											</div>				
 										</div>
 									</div>
-								</div>
+								</div>	
 							</lightning-card>
 						</lightning-layout-item>						
 					</template>				
