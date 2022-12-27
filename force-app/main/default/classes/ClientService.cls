@@ -33,7 +33,17 @@ public with sharing class ClientService {
        Lead newLead = LeadService.createLead(firstname, lastName, phone, email);
        CaseService.createCase(text, subject, carCenterId, newLead.Id, email, NULL);
        return true;
-        
+       
+
+        }
+        // public static Boolean byeCar(String firstname,
+        // String lastname,
+        // String phone,
+        // String email,
+        // String carCenter,
+        // String product){
+        //     Contact contact = new Contact(firstname, lastname, phone, email);
+        //     Opportunity opp = new Opportunity(contactId, carCenter, product);
         //У Case есть 2 поля contactId и Lead__с
 
         
