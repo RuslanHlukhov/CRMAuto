@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import getCars from '@salesforce/apex/carsListController.getCars';
 import getCarsByModel from '@salesforce/apex/carsListController.getCarsByModel';
 import SortByCapacity from '@salesforce/apex/carsListController.getCarsByEngineCapacity';
@@ -7,6 +7,7 @@ import MoreInformationLabel from '@salesforce/label/c.MoreInformation';
 import SortByDateAddedLabel from '@salesforce/label/c.SortByDateAdded';
 import SortByCapacityLabel from '@salesforce/label/c.SortByCapacity';
 import SortByBuildDateLabel from '@salesforce/label/c.SortByBuildDate';
+import BuyCar from '@salesforce/label/c.BuyCar';
 import SearchCar from '@salesforce/label/c.SearchCar';
 
 export default class CarsList extends LightningElement {
@@ -16,7 +17,8 @@ export default class CarsList extends LightningElement {
         SortByDateAddedLabel,
         SortByCapacityLabel,
         SortByBuildDateLabel,
-        SearchCar
+        SearchCar,
+        BuyCar
     };
     
     showData = false;
@@ -29,6 +31,7 @@ export default class CarsList extends LightningElement {
     priceLisk = [];
     @track centerList = [];
     @track isShowModal = false;
+    @track isShowModalByCar = false;
     @track isUKRActive = false;
     @track isDollarActive = true;
     connectedCallback() {
@@ -51,7 +54,8 @@ export default class CarsList extends LightningElement {
                         Price: result[key].product.PriceUSD__c,
                         Vin: result[key].product.Vin_Code__c,
                         Photo: fotoUrl,
-                        PriceUa: result[key].uaPrice
+                        PriceUa: result[key].uaPrice,
+                        CarCenter:result[key].product.Car_Center__c
                     });            
                 }
                 this.showData = true;
@@ -77,7 +81,8 @@ export default class CarsList extends LightningElement {
                     Price: result[key].product.PriceUSD__c,
                     Vin: result[key].product.Vin_Code__c,
                     Photo: fotoUrl,
-                    PriceUa: result[key].uaPrice
+                    PriceUa: result[key].uaPrice, 
+                    CarCenter:result[key].product.Car_Center__c
                 });            
             }
             this.showData = true;
@@ -102,7 +107,8 @@ export default class CarsList extends LightningElement {
                     Price: result[key].product.PriceUSD__c,
                     Vin: result[key].product.Vin_Code__c,
                     Photo: fotoUrl,
-                    PriceUa: result[key].uaPrice
+                    PriceUa: result[key].uaPrice,
+                    CarCenter:result[key].product.Car_Center__c
                 });            
             }
             this.showData = true;
@@ -129,7 +135,8 @@ export default class CarsList extends LightningElement {
                             Price: result[key].product.PriceUSD__c,
                             Vin: result[key].product.Vin_Code__c,
                             Photo: fotoUrl,
-                            PriceUa: result[key].uaPrice
+                            PriceUa: result[key].uaPrice,
+                            CarCenter:result[key].product.Car_Center__c
                         });
                     }
                     this.showData = true;
@@ -154,9 +161,18 @@ export default class CarsList extends LightningElement {
         this.getSelectedCarByVin();
         this.isShowModal = true;  
     }
+    showModalByCar(event){
+        console.log('Test');
+        this.selectedCarVin = event.currentTarget.dataset.value;
+        this.getSelectedCarByVin();
+        this.isShowModalByCar = true;  
+     }
     
     hideModalBox() {  
         this.isShowModal = false;
+    }
+    hideModalBoxByCar(){
+         this.isShowModalByCar = false;
     }
     handleUaPrice(event) {
         console.log('TestUACurrency');
