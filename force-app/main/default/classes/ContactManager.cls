@@ -15,4 +15,5 @@ public with sharing class ContactManager {
             return NULL;
         }
     }
+
 }
