@@ -35,6 +35,7 @@ export default class CarsList extends LightningElement {
     @track text;
     @track price;
     @track product;
+    @track selectCar;
     @track centerName;
     @track selectedCar;
     @track selectedCarVin;
@@ -202,7 +203,7 @@ export default class CarsList extends LightningElement {
             email: this.email,
             price:this.price,
             carCenter:this.carCenter,
-            selectCar: this.product        
+            product: this.selectCar        
         })
         .then(result => {
             this.message = result;
@@ -253,19 +254,18 @@ export default class CarsList extends LightningElement {
         this.text = event.target.value;
     }
     handleCarCenter(event){
-        this.carCenter = JSON.stringify(event.target.value);
-        disabled=true;
+        this.carCenter = event.target.innerText;
     }
     handlePrice(event){
-        this.price = event.target.value;
-    }
-    testcarCenter(event){
-        console.log(JSON.stringify(this.carCenter = event.target.value));
-        this.carCenter = event.value;
-        console.log('Test');
+        this.price = event.target.innerText;
     }
     handleCar(event){
-        this.selectedCar = event.target.value;
+        this.selectCar = event.target.innerText;
+        console.log(this.selectCar);
+    }
+    testcarCenter(event){
+        this.selectCar = event.target.innerText;
+        console.log(this.selectCar);
     }
 
 }
