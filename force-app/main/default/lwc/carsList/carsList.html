@@ -181,24 +181,24 @@
 								<lightning-input class="email-area" label="Email" value={email} onchange={handleEmailChange}
 									required>
 								</lightning-input>
+
+								<lightning-input class="slds-var-m-bottom_xx-small"  style=" font-size:15px" value={selectedCar.CarCenter} onclick={testcarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</lightning-input>
 								
-									<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px" >{selectedCar.CarCenter}</p>
-								
-									<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px" if:true={isUKRActive}>Цена: {selectedCar.PriceUa} UA</p>
-									<p class="slds-var-m-bottom_xx-small" style=" font-size:15px" if:true={isDollarActive}>Цена: {selectedCar.Price} USD</p>
+									
+								<lightning-input class="slds-var-m-bottom_xx-small" style=" font-size:15px" value={selectedCar.Price} onchange={handlePrice} if:true={isDollarActive}>Цена: {selectedCar.Price} USD</lightning-input>
 								
 									
 								
 								
-									<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px" >{selectedCar.Name} {selectedCar.Model}</p>
+									<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px" value={selectedCar.Name}  onclick={testcarCenter} onchange={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
 								
 								
 			
-								<lightning-input type="text" label="Text" value={text} onchange={handleTextChange}>
-								</lightning-input>
+								<!-- <lightning-input type="text" label="Text" value={text} onchange={handleTextChange}>
+								</lightning-input> -->
 			
 								<div class="save-area">
-								<lightning-button label="Buy Car" onclick={handleClick} style="margin-top:15px;"></lightning-button>
+								<lightning-button label="Buy Car" onclick={buyCar} style="margin-top:15px;"></lightning-button>
 								</div>
 							</div>
 						</lightning-card>
