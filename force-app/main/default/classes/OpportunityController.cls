@@ -9,7 +9,8 @@ public with sharing class OpportunityController {
        String phone,
        String email,
        String carCenter,
-       String product
+       String product,
+       String price
        ){
         return OpportunityService.createAccountAndOpportunity(
             firstname,
@@ -17,7 +18,8 @@ public with sharing class OpportunityController {
             phone,
             email,
             carCenter,
-            product
+            product,
+            price
         );
     }
 }

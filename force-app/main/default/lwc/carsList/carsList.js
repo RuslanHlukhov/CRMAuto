@@ -1,4 +1,5 @@
 import { LightningElement, track, api } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getCars from '@salesforce/apex/carsListController.getCars';
 import getCarsByModel from '@salesforce/apex/carsListController.getCarsByModel';
 import SortByCapacity from '@salesforce/apex/carsListController.getCarsByEngineCapacity';
@@ -9,6 +10,7 @@ import SortByCapacityLabel from '@salesforce/label/c.SortByCapacity';
 import SortByBuildDateLabel from '@salesforce/label/c.SortByBuildDate';
 import BuyCar from '@salesforce/label/c.BuyCar';
 import SearchCar from '@salesforce/label/c.SearchCar';
+import OpportunityController from '@salesforce/apex/OpportunityController.createAccountAndOpportunity';
 
 export default class CarsList extends LightningElement {
 
@@ -25,6 +27,14 @@ export default class CarsList extends LightningElement {
     recordsList = [];
     products;
     errors;
+    @track firstname;
+    @track lastname;
+    @track phone;
+    @track email;
+    @track carCenter;
+    @track text;
+    @track price;
+    @track product;
     @track centerName;
     @track selectedCar;
     @track selectedCarVin;
@@ -183,6 +193,79 @@ export default class CarsList extends LightningElement {
         console.log('TestUSACurrency');
         this.isDollarActive = true;
         this.isUKRActive = false;
+    }
+    buyCar(){
+        OpportunityController({
+            firstname: this.firstname,
+            lastname: this.lastname,
+            phone: this.phone,
+            email: this.email,
+            price:this.price,
+            carCenter:this.carCenter,
+            selectCar: this.product        
+        })
+        .then(result => {
+            this.message = result;
+            this.error = undefined;
+            if (this.message !== undefined) {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: 'Application created',
+                        variant:'success',
+                    }),
+                );
+                [...this.template
+                    .querySelectorAll('lightning-input')]
+                    .forEach((input) => { input.value = ''; });
+            }
+            console.log(JSON.stringify(result));
+            console.log("result", this.message);
+            console.log(result);
+        })
+
+        .catch(error => {
+            this.message = undefined;
+            this.error = error;
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: error.body.message,
+                    variant: 'error',
+                }),
+            );
+            console.log("error", JSON.stringify(this.error));
+        });
+    }
+    handleFirstNameChange(event) {
+        this.firstname = event.target.value;
+    }
+    handleLastNameChange(event) {
+        this.lastname = event.target.value;
+    }
+    handlePhoneChange(event) {
+        this.phone = event.target.value;
+    }
+    handleEmailChange(event) {
+        this.email = event.target.value;
+    }
+    handleTextChange(event) {
+        this.text = event.target.value;
+    }
+    handleCarCenter(event){
+        this.carCenter = JSON.stringify(event.target.value);
+        disabled=true;
+    }
+    handlePrice(event){
+        this.price = event.target.value;
+    }
+    testcarCenter(event){
+        console.log(JSON.stringify(this.carCenter = event.target.value));
+        this.carCenter = event.value;
+        console.log('Test');
+    }
+    handleCar(event){
+        this.selectedCar = event.target.value;
     }
 
 }
