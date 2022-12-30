@@ -256,6 +256,10 @@ export default class CarsList extends LightningElement {
     handleCarCenter(event){
         this.carCenter = event.target.innerText;
     }
+    testCarCenter(event){
+        this.carCenter = event.target.innerText;
+        console.log(this.carCenter);
+    }
     handlePrice(event){
         this.price = event.target.innerText;
     }
@@ -263,7 +267,7 @@ export default class CarsList extends LightningElement {
         this.selectCar = event.target.innerText;
         console.log(this.selectCar);
     }
-    testcarCenter(event){
+    testcar(event){
         this.selectCar = event.target.innerText;
         console.log(this.selectCar);
     }

@@ -15,13 +15,13 @@ public with sharing class OpportunityService {
         String lastname,
         String phone,
         String email,
-        String carCenter,
         String product,
+        String carCenter,
         String price
     ){
         Lead newLead = LeadService.createLead(firstname, lastName, phone, email);
         Decimal priceToConvert = formPrice(price);
-        Opportunity opp = OpportunityManager.createOpportunity(newLead.Id, firstname, carCenter, product, priceToConvert);
+        Opportunity opp = OpportunityManager.createOpportunity(newLead.Id, product, carCenter, priceToConvert);
         return true;
         
     }
