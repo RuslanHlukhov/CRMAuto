@@ -182,15 +182,15 @@
 									required>
 								</lightning-input>
 
-								<lightning-input class="slds-var-m-bottom_xx-small"  style=" font-size:15px" value={selectedCar.CarCenter} onclick={testcarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</lightning-input>
+								<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px"  onclick={testcarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</p>
 								
 									
-								<lightning-input class="slds-var-m-bottom_xx-small" style=" font-size:15px" value={selectedCar.Price} onchange={handlePrice} if:true={isDollarActive}>Цена: {selectedCar.Price} USD</lightning-input>
+								<p class="slds-var-m-bottom_xx-small test" style=" font-size:15px"  onclick={handlePrice} onchange={handlePrice} if:true={isDollarActive}>{selectedCar.Price}</p>
 								
 									
 								
 								
-									<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px" value={selectedCar.Name}  onclick={testcarCenter} onchange={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
+								<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px"  onclick={testcarCenter} onchange={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
 								
 								
 			
