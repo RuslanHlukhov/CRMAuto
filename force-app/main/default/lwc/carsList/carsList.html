@@ -38,7 +38,7 @@
 		</div>
 	</div>
 		<div class="money-area">
-			<p class="currency">Currency</p>
+			<p class="currency">{label.Currency}</p>
 			<button class="curryncy slds-button slds-button_brand"  onclick={handleUaPrice}>UA</button>
 			<button class="curryncy slds-button slds-button_success" onclick={handleUsdPrice}>USD</button>
 		</div>
@@ -59,13 +59,13 @@
 										<div class="slds-media__body"  >
 											<div class="modal" data-value={product.Vin} onclick={showModalBox} > 
 											<p class="slds-var-m-bottom_xx-small" style="text-transform: uppercase; font-size:20px">{product.Name}</p>
-											<p class="slds-var-m-bottom_xx-small">Модель: {product.Model}</p>
-											<p class="slds-var-m-bottom_xx-small">Объем: {product.EngineCapacity}
+											<p class="slds-var-m-bottom_xx-small">{label.Model}: {product.Model}</p>
+											<p class="slds-var-m-bottom_xx-small">{label.EngineCapacity}: {product.EngineCapacity}
 											</p>
-											<p class="slds-var-m-bottom_xx-small">Дата выпуска: {product.Build}
+											<p class="slds-var-m-bottom_xx-small">{label.BuildDate}: {product.Build}
 											</p>
-											<p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>Цена: {product.PriceUa} UA</p>
-											<p class="slds-var-m-bottom_xx-small" if:true={isDollarActive}>Цена: {product.Price} USD</p>
+											<p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>{label.Price}: {product.PriceUa} UA</p>
+											<p class="slds-var-m-bottom_xx-small" if:true={isDollarActive}>{label.Price}: {product.Price} USD</p>
 											<p class="slds-var-m-bottom_xx-small">VIN: {product.Vin}</p>
 											<img src={product.Photo} style="height: 140px; width:200px;"  />	
 											
@@ -78,7 +78,7 @@
 									</div>
 								</div>	
 								<div class="moreInformation" data-value={product.Vin} onclick={showModalByCar}>
-									<button class="slds-button slds-button_brand"><h5>Buy Car</h5></button>	
+									<button class="slds-button slds-button_brand"><h5>{label.BuyCar}</h5></button>	
 																		
 									</div>	
 							</lightning-card>
@@ -109,24 +109,24 @@
                             size="small"
 							style="margin-bottom:20px"
 							></lightning-icon>
-                        <span class="slds-assistive-text" style="margin-bottom:20px">Close</span>
+                        <span class="slds-assistive-text" style="margin-bottom:20px">{label.Close}</span>
                     </button>
                     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="text-transform: uppercase; font-size:25px">{selectedCar.Model}</h2>
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 					<img src={selectedCar.Photo} style="height: 140px; width:200px; margin: 20px;  margin-left: 30%;"  />
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Объем: {selectedCar.EngineCapacity}
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">{label.EngineCapacity}: {selectedCar.EngineCapacity}
 					</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">Дата выпуска: {selectedCar.Build}
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">{label.BuildDate}: {selectedCar.Build}
 					</p>
-					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>Цена: {selectedCar.PriceUa} UA</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>Цена: {selectedCar.Price} USD</p>
+					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>
 					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">VIN: {selectedCar.Vin}</p>		
                 </div>
                 <!-- Modal/Popup Box LWC footer starts here -->
                 <footer class="slds-modal__footer">
-                    <button class="slds-button slds-button_neutral" onclick={hideModalBox} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBox} title="Cancel">{label.Close}</button>
                 </footer>
 			</lightning-card>
             </div>
@@ -147,15 +147,15 @@
                             size="small"
 							style="margin-bottom:20px"
 							></lightning-icon>
-                        <span class="slds-assistive-text" style="margin-bottom:20px">Close</span>
+                        <span class="slds-assistive-text" style="margin-bottom:20px">{label.Close}</span>
                     </button>
                     <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate" style="text-transform: uppercase; font-size:25px">{selectedCar.Model}</h2>
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
 					<img src={selectedCar.Photo} style="height: 140px; width:200px; margin: 20px;  margin-left: 30%;"  />
-					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>Цена: {selectedCar.PriceUa} UA</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>Цена: {selectedCar.Price} USD</p>		
+					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
+					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>		
                 </div>
 				<div>
 				<div class="slds-grid slds-gutters">
@@ -198,7 +198,7 @@
 								</lightning-input> -->
 			
 								<div class="save-area">
-								<lightning-button label="Buy Car" onclick={buyCar} style="margin-top:15px;"></lightning-button>
+								<button class="slds-button slds-button_brand" onclick={buyCar} style="margin-top:15px;"><h5>{label.BuyCar}</h5></button>
 								</div>
 							</div>
 						</lightning-card>
@@ -209,7 +209,7 @@
 				</div>
                 <!-- Modal/Popup Box LWC footer starts here -->
                 <footer class="slds-modal__footer">
-                    <button class="slds-button slds-button_neutral" onclick={hideModalBoxByCar} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_neutral" onclick={hideModalBoxByCar} title="Cancel">{label.Close}</button>
                 </footer>
 			</lightning-card>
             </div>

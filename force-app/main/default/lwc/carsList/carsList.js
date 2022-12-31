@@ -10,6 +10,12 @@ import SortByCapacityLabel from '@salesforce/label/c.SortByCapacity';
 import SortByBuildDateLabel from '@salesforce/label/c.SortByBuildDate';
 import BuyCar from '@salesforce/label/c.BuyCar';
 import SearchCar from '@salesforce/label/c.SearchCar';
+import Model from '@salesforce/label/c.Model';
+import EngineCapacity from '@salesforce/label/c.EngineCapacity';
+import BuildDate from '@salesforce/label/c.BuildDate';
+import Price from '@salesforce/label/c.Price';
+import Currency from '@salesforce/label/c.Currency';
+import Close from '@salesforce/label/c.Close';
 import OpportunityController from '@salesforce/apex/OpportunityController.createAccountAndOpportunity';
 
 export default class CarsList extends LightningElement {
@@ -20,7 +26,13 @@ export default class CarsList extends LightningElement {
         SortByCapacityLabel,
         SortByBuildDateLabel,
         SearchCar,
-        BuyCar
+        BuyCar,
+        Model,
+        EngineCapacity,
+        BuildDate,
+        Price,
+        Currency,
+        Close
     };
     
     showData = false;

@@ -4,10 +4,26 @@ import createTestDriveClient from '@salesforce/apex/TestDriveClientController.cr
 import getCarCenters from '@salesforce/apex/CarCenterManager.getCarCenters';
 import getCarsFromCarCenterByCarCenterId from '@salesforce/apex/carListManager.getCarsFromCarCenterByCarCenterId';
 import testDrive from '@salesforce/label/c.TestDrive';
+import Name from '@salesforce/label/c.Name';
+import LastName from '@salesforce/label/c.LastName';
+import Phone from '@salesforce/label/c.Phone';
+import CarCerter from '@salesforce/label/c.CarCerter';
+import Cars from '@salesforce/label/c.Cars';
+import Text from '@salesforce/label/c.Text';
+import Send from '@salesforce/label/c.Send';
+import SelectDate from '@salesforce/label/c.SelectDate';
 
 export default class TestDrive extends LightningElement {
     label = {
-        testDrive
+        testDrive,
+        Name,
+        LastName,
+        Phone,
+        CarCerter,
+        Cars,
+        Text,
+        Send,
+        SelectDate
     }
 
     @track carCenterOptionsToPush = [];

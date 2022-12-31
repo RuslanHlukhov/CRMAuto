@@ -1,6 +1,13 @@
 import { LightningElement, track, wire } from 'lwc';
 import Contact from '@salesforce/label/c.Contact';
 import AboutUsLabel from '@salesforce/label/c.AboutUs';
+import Name from '@salesforce/label/c.Name';
+import LastName from '@salesforce/label/c.LastName';
+import Phone from '@salesforce/label/c.Phone';
+import CarCerter from '@salesforce/label/c.CarCerter';
+import Text from '@salesforce/label/c.Text';
+import Send from '@salesforce/label/c.Send';
+import Subject from '@salesforce/label/c.Subject';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createClient from '@salesforce/apex/ClientConroller.createClient';
 import getCarCenters from '@salesforce/apex/CarCenterManager.getCarCenters';
@@ -10,6 +17,13 @@ export default class createLead extends LightningElement {
     label = {
         AboutUsLabel,
         Contact,
+        Name,
+        LastName,
+        Phone,
+        CarCerter,
+        Text,
+        Send,
+        Subject
     };
 
     @track name;
