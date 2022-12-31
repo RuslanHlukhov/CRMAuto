@@ -7,15 +7,15 @@
             <h1 class="testdrive">{label.testDrive}</h1>
             <lightning-card>
                 <div class="slds-p-around_x-small">
-                    <lightning-input class="firstName-area" type="text" label="Name" value={firstname}
+                    <lightning-input class="firstName-area" type="text" label={label.Name} value={firstname}
                         onchange={handleFirstNameChange} minlength="3" maxlength="15" required>
                     </lightning-input>
 
-                    <lightning-input class="lastName-area" type="text" label="LastName" value={lastname}
+                    <lightning-input class="lastName-area" type="text" label={label.LastName} value={lastname}
                         onchange={handleLastNameChange} minlength="3" maxlength="15" required>
                     </lightning-input>
 
-                    <lightning-input class="phone-area" type="Phone" label="Phone" value={phone}
+                    <lightning-input class="phone-area" type="Phone" label={label.Phone} value={phone}
                         onchange={handlePhoneChange} placeholder="+380-000-00-00"
                         pattern="\+3\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}" minlength="10" maxlength="13" required>
                     </lightning-input>
@@ -24,24 +24,24 @@
                         required>
                     </lightning-input>
                     <div onclick={handleClickOnCarCenters} class="divforoptions">
-                        <lightning-combobox name="carCenter-area" label="Car center" value={selectedCarCenterId}
+                        <lightning-combobox name="carCenter-area" label={label.CarCerter} value={selectedCarCenterId}
                             options={carCenterOptions} onchange={handleCarCenter}> 
                         </lightning-combobox>
                     </div> 
 
                     <div onclick={handleProductChange} class="divforcars">
-                        <lightning-combobox name="cars-area" label="Cars" value={selectedCarId} 
+                        <lightning-combobox name="cars-area" label={label.Cars} value={selectedCarId} 
                         options={carsOptions} onchange={handleProductSelect}>
                         </lightning-combobox>
                     </div>
 
-                    <lightning-input type="text" label="Text" value={text} onchange={handleTextChange}>
+                    <lightning-input type="text" label={label.Text} value={text} onchange={handleTextChange}>
                     </lightning-input>
 
-                    <lightning-input class="date-area" value={date} type="datetime" name="date" label="Select date"
+                    <lightning-input class="date-area" value={date} type="datetime" name="date" label={label.SelectDate}
                         onchange={handleDateChange} min={dateNow} required></lightning-input>
                     <div class="save-area">
-                    <lightning-button label="Save" onclick={handleClick} style="margin-top:15px;"></lightning-button>
+                    <lightning-button label={label.Send} onclick={handleClick} style="margin-top:15px;"></lightning-button>
                     </div>
                 </div>
             </lightning-card>
