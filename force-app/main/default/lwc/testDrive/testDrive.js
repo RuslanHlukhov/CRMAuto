@@ -44,6 +44,13 @@ export default class TestDrive extends LightningElement {
     @track testDriveStartDate;
     @track dateNow;
 
+    get optionsForCarCenter(){
+        return this.carCenterOptions;
+    }
+    get optionsForCar(){
+        return this.carsOptions;
+    }
+
     connectedCallback() {
         this.selectCarCetnerList();
     }
@@ -57,6 +64,7 @@ export default class TestDrive extends LightningElement {
                         label: this.carCentersFromDB[key].Name, value: this.carCentersFromDB[key].Id
                     });
                 }
+                this.carCenterOptions = this.carCenterOptionsToPush;
             });
     }
     handleCarCenter(event) {
@@ -71,6 +79,7 @@ export default class TestDrive extends LightningElement {
                     label: this.carsFromCarCenterFromDB[key].Model__c + ' ' + this.carsFromCarCenterFromDB[key].Vin_Code__c, value: this.carsFromCarCenterFromDB[key].Id
                 })
             }
+            this.carsOptions = this.carsToPush;
         })
         console.log("Car Center", this.selectedCarCenterId);
     }
@@ -124,17 +133,16 @@ export default class TestDrive extends LightningElement {
             });
     }
 
-    handleClickOnCarCenters(event){
-        console.log('handleClickOnCarCenters');
-        this.carCenterOptions = this.carCenterOptionsToPush;
-        console.log('this.carCenterOptions: ', JSON.stringify(this.carCenterOptions));
-        
-    }
-    handleProductChange(event) {
-        console.log('handleProductChange');
-        this.carsOptions = this.carsToPush;
-        console.log("this.carsOptions", JSON.stringify(this.carsOptions));
-    }
+    // handleClickOnCarCenters(event){
+    //     console.log('handleClickOnCarCenters');
+    //     this.carCenterOptions = this.carCenterOptionsToPush;
+    //     console.log('this.carCenterOptions: ', JSON.stringify(this.carCenterOptions));       
+    // }
+    // handleProductChange(event) {
+    //     console.log('handleProductChange');
+    //     this.carsOptions = this.carsToPush;
+    //     console.log("this.carsOptions", JSON.stringify(this.carsOptions));
+    // }
     handleProductSelect(event){
         console.log('selectedCarId');
         console.log(event.target.value);
