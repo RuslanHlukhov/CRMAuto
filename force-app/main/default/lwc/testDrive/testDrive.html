@@ -23,17 +23,23 @@
                     <lightning-input class="email-area" label="Email" value={email} onchange={handleEmailChange}
                         required>
                     </lightning-input>
-                    <div onclick={handleClickOnCarCenters} class="divforoptions">
-                        <lightning-combobox name="carCenter-area"  label={label.CarCerter} value={selectedCarCenterId}
-                            options={carCenterOptions} onchange={handleCarCenter}> 
+                    <!-- <div onclick={handleClickOnCarCenters} class="divforoptions"> -->
+                        <lightning-combobox name="carCenter-area"  
+                                            label={label.CarCerter} 
+                                            value={selectedCarCenterId}
+                                            options={optionsForCarCenter} 
+                                            onchange={handleCarCenter}> 
                         </lightning-combobox>
-                    </div> 
+                    <!-- </div>  -->
 
-                    <div onclick={handleProductChange} class="divforcars">
-                        <lightning-combobox name="cars-area" label={label.Cars} value={selectedCarId} 
-                        options={carsOptions} onchange={handleProductSelect}>
+                    <!-- <div onclick={handleProductChange} class="divforcars"> -->
+                        <lightning-combobox name="cars-area" 
+                                            label={label.Cars} 
+                                            value={selectedCarId} 
+                                            options={optionsForCar} 
+                                            onchange={handleProductSelect}>
                         </lightning-combobox>
-                    </div>
+                    <!-- </div> -->
 
                     <lightning-input type="text" label={label.Text} value={text} onchange={handleTextChange}>
                     </lightning-input>
