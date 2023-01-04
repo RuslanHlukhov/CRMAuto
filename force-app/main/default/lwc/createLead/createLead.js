@@ -37,12 +37,16 @@ export default class createLead extends LightningElement {
     @track selectedCarCenterId;
     @track carsFromCarCenterFromDB;
     @track carCenterOptionsToPush = [];
-
+    @track value = '';
+    @track optionsArray = [];
+    get options(){
+        return this.carCenterOptions;
+    }
     connectedCallback() {
         this.selectCarCetnerList();
-    }
+        }
     selectCarCetnerList() {
-        getCarCenters({})
+        getCarCenters()
             .then(result => {
                 this.carCentersFromDB = result;
                 for (let key in this.carCentersFromDB) {
@@ -50,22 +54,33 @@ export default class createLead extends LightningElement {
                         label: this.carCentersFromDB[key].Name, value: this.carCentersFromDB[key].Id
                     });
                 }
+                this.carCenterOptions = this.carCenterOptionsToPush;
+                console.log('carCenterOptionsToPush' + this.carCenterOptionsToPush);
+                // let arr = [];
+                // for(var i = 0; i<result.length; i++){
+                //     arr.push({
+                //         label : result[i].Name,
+                //         value: result[i].Id
+                //     })
+                // }
+                // this.optionsArray = arr;
             });
     }
 
     handleCarCenter(event) {
         this.selectedCarCenterId = event.target.value;
-        getCarsFromCarCenterByCarCenterId({
-            CarCenterId: this.selectedCarCenterId
-        })
-        .then(result => {
-            this.carsFromCarCenterFromDB = result;
-            for(let key in this.carsFromCarCenterFromDB){
-                this.carsToPush.push({
-                    label: this.carsFromCarCenterFromDB[key].Model__c + ' ' + this.carsFromCarCenterFromDB[key].Vin_Code__c, value: this.carsFromCarCenterFromDB[key].Id
-                })
-            }
-        })
+        // getCarsFromCarCenterByCarCenterId({
+        //     CarCenterId: this.selectedCarCenterId
+        // })
+        // .then(result => {
+        //     this.carsFromCarCenterFromDB = result;
+        //     for(let key in this.carsFromCarCenterFromDB){
+        //         this.carsToPush.push({
+        //             label: this.carsFromCarCenterFromDB[key].Model__c + ' ' + this.carsFromCarCenterFromDB[key].Vin_Code__c, 
+        //             value: this.carsFromCarCenterFromDB[key].Id
+        //         })
+        //     }
+        // })
         console.log("Car Center", this.selectedCarCenterId);
     }
     
