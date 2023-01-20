@@ -4,4 +4,6 @@
 .textMap{
     text-transform: uppercase;
     font-size: 30px;
+    margin-left: 36%; 
+    color: rgb(88, 85, 85);
 }
