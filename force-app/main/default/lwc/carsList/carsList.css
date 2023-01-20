@@ -37,3 +37,43 @@
 .moreInformation{
     margin-top: 3%;
 }
+.byeCard{
+    margin-top: 1%;
+}
+.styleForFotoBuy{
+    height: 260px; 
+    width:445px; 
+    margin: 0px 2px 0px 12%; 
+    border:1px solid black;
+}
+.close{
+    margin-bottom:20px;
+}
+.staticText{
+    font-size: 20px; 
+    color: black;
+}
+.buyCar{
+    margin-top:15px;
+}
+.carList{
+    width: 99%; 
+    margin-left:3px;
+}
+.productName{
+    text-transform: uppercase; 
+    font-size:20px;
+}
+.imgCarList{
+    height: 140px; 
+    width:200px;
+}
+.imgMoreInformation{
+    height: 300px; 
+    width:500px; 
+    margin: 20px;  
+    margin-left: 10%;
+}
+.fontSizeMoreInformation{
+    font-size:20px
+}
