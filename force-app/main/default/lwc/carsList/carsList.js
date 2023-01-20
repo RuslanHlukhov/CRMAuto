@@ -19,7 +19,7 @@ import Close from '@salesforce/label/c.Close';
 import OpportunityController from '@salesforce/apex/OpportunityController.createAccountAndOpportunity';
 
 export default class CarsList extends LightningElement {
-
+    
     label = {
         MoreInformationLabel,
         SortByDateAddedLabel,
@@ -57,6 +57,7 @@ export default class CarsList extends LightningElement {
     @track isShowModalByCar = false;
     @track isUKRActive = false;
     @track isDollarActive = true;
+    
     connectedCallback() {
         this.loadCars();
     }
@@ -184,12 +185,7 @@ export default class CarsList extends LightningElement {
         this.getSelectedCarByVin();
         this.isShowModal = true;  
     }
-    showModalByCar(event){
-        console.log('Test');
-        this.selectedCarVin = event.currentTarget.dataset.value;
-        this.getSelectedCarByVin();
-        this.isShowModalByCar = true;  
-     }
+    
     
     hideModalBox() {  
         this.isShowModal = false;
@@ -207,6 +203,42 @@ export default class CarsList extends LightningElement {
         this.isDollarActive = true;
         this.isUKRActive = false;
     }
+
+    handleFirstNameChange(event) {
+        this.firstname = event.target.value;
+    }
+    handleLastNameChange(event) {
+        this.lastname = event.target.value;
+    }
+    handlePhoneChange(event) {
+        this.phone = event.target.value;
+    }
+    handleEmailChange(event) {
+        this.email = event.target.value;
+    }
+    handleTextChange(event) {
+        this.text = event.target.value;
+    }
+    
+    handleCarCenter(event){
+        this.carCenter = event.target.value;
+        console.log('Car Center ' + this.carCenter);
+    }
+    handlePrice(event){
+        this.price = event.target.innerText;
+        console.log('Price ' + this.price);
+    }
+    handleCar(event){
+        this.selectCar = event.target.innerText;
+        console.log('Price ' + this.selectCar);
+    }
+
+showModalByCar(event){
+    console.log('Test');
+    this.selectedCarVin = event.currentTarget.dataset.value;
+    this.getSelectedCarByVin();
+    this.isShowModalByCar = true;     
+ }
     buyCar(){
         OpportunityController({
             firstname: this.firstname,
@@ -249,39 +281,7 @@ export default class CarsList extends LightningElement {
             );
             console.log("error", JSON.stringify(this.error));
         });
-    }
-    handleFirstNameChange(event) {
-        this.firstname = event.target.value;
-    }
-    handleLastNameChange(event) {
-        this.lastname = event.target.value;
-    }
-    handlePhoneChange(event) {
-        this.phone = event.target.value;
-    }
-    handleEmailChange(event) {
-        this.email = event.target.value;
-    }
-    handleTextChange(event) {
-        this.text = event.target.value;
-    }
-    handleCarCenter(event){
-        this.carCenter = event.target.innerText;
-    }
-    testCarCenter(event){
-        this.carCenter = event.target.innerText;
-        console.log(this.carCenter);
-    }
-    handlePrice(event){
-        this.price = event.target.innerText;
-    }
-    handleCar(event){
-        this.selectCar = event.target.innerText;
-        console.log(this.selectCar);
-    }
-    testcar(event){
-        this.selectCar = event.target.innerText;
-        console.log(this.selectCar);
-    }
+        
+    };
 
 }
