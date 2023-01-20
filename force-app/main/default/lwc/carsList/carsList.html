@@ -50,7 +50,7 @@
             <option key={centerObj.Id}>{centerObj.model}</option>
 		</template>
 			<template if:true={showData}>
-				<lightning-layout multiple-rows="true" pull-to-boundary="small" style="width: 99%; margin-left:3px;">					
+				<lightning-layout multiple-rows="true" pull-to-boundary="small" class="carList">					
 					<template for:each={recordsList}   for:item="product">
 						<lightning-layout-item key={product.Id} size="2" class="slds-var-p-around_x-small" >
 							<lightning-card  class="cars-tile">
@@ -58,7 +58,7 @@
 									<div class="slds-media">
 										<div class="slds-media__body"  >
 											<div class="modal" data-value={product.Vin} onclick={showModalBox} > 
-											<p class="slds-var-m-bottom_xx-small" style="text-transform: uppercase; font-size:20px">{product.Name}</p>
+											<p class="slds-var-m-bottom_xx-small productName">{product.Name}</p>
 											<p class="slds-var-m-bottom_xx-small">{label.Model}: {product.Model}</p>
 											<p class="slds-var-m-bottom_xx-small">{label.EngineCapacity}: {product.EngineCapacity}
 											</p>
@@ -67,7 +67,7 @@
 											<p class="slds-var-m-bottom_xx-small" if:true={isUKRActive}>{label.Price}: {product.PriceUa} UA</p>
 											<p class="slds-var-m-bottom_xx-small" if:true={isDollarActive}>{label.Price}: {product.Price} USD</p>
 											<p class="slds-var-m-bottom_xx-small">VIN: {product.Vin}</p>
-											<img src={product.Photo} style="height: 140px; width:200px;"  />	
+											<img class="imgCarList" src={product.Photo}/>	
 											
 											</div>	
 											<div class="moreInformation" data-value={product.Vin} onclick={showModalBox}>
@@ -104,27 +104,29 @@
                 <!-- Modal/Popup Box LWC header here -->
 				<lightning-card  class="cars-tile">
                 <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox} style="margin-bottom:20px" >
-                        <lightning-icon icon-name="utility:close"
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse close" title="Close" onclick={hideModalBox} >
+                        <lightning-icon 
+							class="close"
+							icon-name="utility:close"
                             alternative-text="close"
                             variant="inverse"
                             size="small"
-							style="margin-bottom:20px"
+							
 							></lightning-icon>
-                        <span class="slds-assistive-text" style="margin-bottom:20px">{label.Close}</span>
+                        <span class="slds-assistive-text close">{label.Close}</span>
                     </button>
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="text-transform: uppercase; font-size:25px">{selectedCar.Model}</h2>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate productName">{selectedCar.Model}</h2>
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-					<img src={selectedCar.Photo} style="height: 300px; width:500px; margin: 20px;  margin-left: 10%;"  />
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">{label.EngineCapacity}: {selectedCar.EngineCapacity}
+					<img class="imgMoreInformation" src={selectedCar.Photo}/>
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation">{label.EngineCapacity}: {selectedCar.EngineCapacity}
 					</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">{label.BuildDate}: {selectedCar.Build}
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation">{label.BuildDate}: {selectedCar.Build}
 					</p>
-					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px">VIN: {selectedCar.Vin}</p>		
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation">VIN: {selectedCar.Vin}</p>		
                 </div>
                 <!-- Modal/Popup Box LWC footer starts here -->
                 <footer class="slds-modal__footer">
@@ -138,26 +140,27 @@
 	<template if:true={isShowModalByCar}>
         <!-- Modal/Popup Box LWC starts here -->
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-            <div class="slds-modal__container">
+            <div class="slds-modal__container byeCard">
                 <!-- Modal/Popup Box LWC header here -->
 				<lightning-card  class="cars-tile">
                 <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBoxByCar} style="margin-bottom:20px" >
-                        <lightning-icon icon-name="utility:close"
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse close" title="Close" onclick={hideModalBoxByCar}>
+                        <lightning-icon 
+							class="close"
+							icon-name="utility:close"
                             alternative-text="close"
                             variant="inverse"
                             size="small"
-							style="margin-bottom:20px"
 							></lightning-icon>
-                        <span class="slds-assistive-text" style="margin-bottom:20px">{label.Close}</span>
+                        <span class="slds-assistive-text close">{label.Close}</span>
                     </button>
-                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate" style="text-transform: uppercase; font-size:25px">{selectedCar.Model}</h2>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate productName">{selectedCar.Model}</h2>
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
-					<img src={selectedCar.Photo} style="height: 300px; width:500px; margin: 20px;  margin-left: 10%;"  />
-					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px; text-align:center;" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
-					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>		
+					<img src={selectedCar.Photo} class="styleForFotoBuy" />
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation"  if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
+					<p class="slds-var-m-bottom_xx-small fontSizeMoreInformation" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>		
                 </div>
 				<div>
 				<div class="slds-grid slds-gutters">
@@ -184,16 +187,16 @@
 									required>
 								</lightning-input>
 								
-								<p class="carCenter slds-var-m-bottom_xx-small "  style="font-size: 20px; color: black;" value={selectedCar.CarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</p>
+								<p class="carCenter slds-var-m-bottom_xx-small staticText" onclick={handleCarCenter}>{selectedCar.CarCenter}</p>
 								
 									
-								<p class="slds-var-m-bottom_xx-small test" style="font-size: 20px; color: black;" onclick={handlePrice}  if:true={isDollarActive}>{selectedCar.Price}</p>
+								<p class="slds-var-m-bottom_xx-small test staticText" onclick={handlePrice}  if:true={isDollarActive}>{selectedCar.Price}</p>
 								<!-- <p class="slds-var-m-bottom_xx-small"  style="font-size: 20px; color: black;" if:true={isUKRActive}>{selectedCar.PriceUa}</p> -->
 								
 								
 								
 								
-								<p class="slds-var-m-bottom_xx-small"  style="font-size: 20px; color: black;" onclick={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
+								<p class="slds-var-m-bottom_xx-small staticText" onclick={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
 								
 								
 			
@@ -201,7 +204,7 @@
 								</lightning-input> -->
 			
 								<div class="save-area">
-								<button class="slds-button slds-button_brand" onclick={buyCar} style="margin-top:15px;"><h5>{label.BuyCar}</h5></button>
+								<button class="slds-button slds-button_brand buyCar" onclick={buyCar}><h5>{label.BuyCar}</h5></button>
 								</div>
 							</div>
 						</lightning-card>
