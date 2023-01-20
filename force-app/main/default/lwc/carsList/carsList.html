@@ -77,10 +77,12 @@
 										</div>
 									</div>
 								</div>	
+								<div class="testClick" onclick={hadleStatikInfo}>
 								<div class="moreInformation" data-value={product.Vin} onclick={showModalByCar}>
 									<button class="slds-button slds-button_brand"><h5>{label.BuyCar}</h5></button>	
 																		
 									</div>	
+								</div>
 							</lightning-card>
 						</lightning-layout-item>						
 					</template>				
@@ -153,8 +155,8 @@
                 </header>
                 <!-- Modal/Popup Box LWC body starts here -->
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
-					<img src={selectedCar.Photo} style="height: 140px; width:200px; margin: 20px;  margin-left: 30%;"  />
-					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
+					<img src={selectedCar.Photo} style="height: 300px; width:500px; margin: 20px;  margin-left: 10%;"  />
+					<p class="slds-var-m-bottom_xx-small"  style=" font-size:20px; text-align:center;" if:true={isUKRActive}>{label.Price}: {selectedCar.PriceUa} UA</p>
 					<p class="slds-var-m-bottom_xx-small" style=" font-size:20px" if:true={isDollarActive}>{label.Price}: {selectedCar.Price} USD</p>		
                 </div>
 				<div>
@@ -181,16 +183,17 @@
 								<lightning-input class="email-area" label="Email" value={email} onchange={handleEmailChange}
 									required>
 								</lightning-input>
-
-								<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px"  onclick={testCarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</p>
+								
+								<p class="carCenter slds-var-m-bottom_xx-small "  style="font-size: 20px; color: black;" value={selectedCar.CarCenter} onchange={handleCarCenter}>{selectedCar.CarCenter}</p>
 								
 									
-								<p class="slds-var-m-bottom_xx-small test" style=" font-size:15px"  onclick={handlePrice} onchange={handlePrice} if:true={isDollarActive}>{selectedCar.Price}</p>
+								<p class="slds-var-m-bottom_xx-small test" style="font-size: 20px; color: black;" onclick={handlePrice}  if:true={isDollarActive}>{selectedCar.Price}</p>
+								<!-- <p class="slds-var-m-bottom_xx-small"  style="font-size: 20px; color: black;" if:true={isUKRActive}>{selectedCar.PriceUa}</p> -->
 								
-									
 								
 								
-								<p class="slds-var-m-bottom_xx-small"  style=" font-size:15px"  onclick={testcar} onchange={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
+								
+								<p class="slds-var-m-bottom_xx-small"  style="font-size: 20px; color: black;" onclick={handleCar} >{selectedCar.Name} {selectedCar.Model}</p>
 								
 								
 			
